@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+  
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #19aa9d;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 4000px;
+            margin: 70px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #searchForm {
+            align-self: flex-end;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Data</h1>
+        <table id="dataTable">
+            <tr>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Received Date</th>
+                <th>Total Charges</th>
+                <th>Deposit Paid</th>
+                <th>Discount</th>
+                <th>Equipment</th>
+                <th>Brand</th>
+                <th>Model No</th>
+                <th>S/N</th>
+                <th>Warranty</th>
+                <th>Accessories</th>
+                <th>Pre Diagnosis</th>
+                <th>Problem</th>
+                <th>Actions</th>
+            </tr>
+        </table>
+        <br><br>
+        <a href="index.html" class="button">Back to Home</a>
+    </div>
+
+    <script>
+        function loadTable() {
+            var customers = JSON.parse(localStorage.getItem('customers')) || [];
+            var table = document.getElementById("dataTable");
+
+            customers.forEach(function(customer, index) {
+                var newRow = table.insertRow(-1);
+
+                newRow.insertCell(0).innerHTML = customer.custId;
+                newRow.insertCell(1).innerHTML = customer.name;
+                newRow.insertCell(2).innerHTML = customer.address;
+                newRow.insertCell(3).innerHTML = customer.phone;
+                newRow.insertCell(4).innerHTML = customer.receivedDate;
+                newRow.insertCell(5).innerHTML = customer.totalCharges;
+                newRow.insertCell(6).innerHTML = customer.depositPaid;
+                newRow.insertCell(7).innerHTML = customer.discount;
+                newRow.insertCell(8).innerHTML = customer.equipment;
+                newRow.insertCell(9).innerHTML = customer.brand;
+                newRow.insertCell(10).innerHTML = customer.modelno;
+                newRow.insertCell(11).innerHTML = customer.serialNumb;
+                newRow.insertCell(12).innerHTML = customer.warranty ? 'Yes' : 'No';
+                newRow.insertCell(13).innerHTML = formatAccessories(customer.accessories);
+                newRow.insertCell(14).innerHTML = formatPreDiagnosis(customer.preDiagnosis);
+                newRow.insertCell(15).innerHTML = customer.problem;
+                var actionsCell = newRow.insertCell(16);
+                actionsCell.innerHTML = `<button onclick="deleteRow(${index})">Delete</button>
+                                         <button onclick="updateRow(${index})">Update</button>`;
+            });
+        }
+
+        function formatAccessories(accessories) {
+            var accessoriesString = '';
+            for (var key in accessories) {
+                if (accessories[key]) {
+                    accessoriesString += key + ', ';
+                }
+            }
+            return accessoriesString.substring(0, accessoriesString.length - 2);
+        }
+
+        function formatPreDiagnosis(preDiagnosis) {
+            var preDiagnosisString = '';
+            for (var key in preDiagnosis) {
+                if (preDiagnosis[key]) {
+                    preDiagnosisString += key + ', ';
+                }
+            }
+            return preDiagnosisString.substring(0, preDiagnosisString.length - 2);
+        }
+
+        function deleteRow(index) {
+            var customers = JSON.parse(localStorage.getItem('customers')) || [];
+            customers.splice(index, 1);
+            localStorage.setItem('customers', JSON.stringify(customers));
+            location.reload();
+        }
+
+        function updateRow(index) {
+            var customers = JSON.parse(localStorage.getItem('customers')) || [];
+            var customer = customers[index];
+            localStorage.setItem('updateIndex', index);
+            localStorage.setItem('customerToUpdate', JSON.stringify(customer));
+            window.location.href = 'form.html';
+        }
+
+        window.onload = loadTable;
+    </script>
+</body>
+</html>

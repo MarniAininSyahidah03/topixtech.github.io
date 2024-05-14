@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Sheet</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #19aa9d;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 70px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        h1, h2 {
+            text-align: center;
+            width: 100%;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"], textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .row, .row1 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .column, .column1 {
+            flex: 1;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Sheet</h1>
+        <form id="userDataForm">
+            <h2>Customer Detail</h2>
+            <label for="custId">ID:</label>
+            <input type="text" id="custId" name="custId"><br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" cols="50"></textarea><br>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone"><br>
+            <h2>Service Detail</h2>
+            <label for="receivedDate">Received (by date):</label>
+            <input type="date" id="receivedDate" name="receivedDate"><br>
+            <label for="totalCharges">Total Charges:</label>
+            <input type="text" id="totalCharges" name="totalCharges"><br>
+            <label for="depositPaid">Deposit Paid:</label>
+            <input type="text" id="depositPaid" name="depositPaid"><br>
+            <label for="discount">Discount:</label>
+            <input type="text" id="discount" name="discount"><br>
+            <h2>Equipment Detail</h2>
+            <label for="equipment">Equipment:</label>
+            <input type="text" id="equipment" name="equipment"><br>
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand"><br>
+            <label for="modelno">Model No:</label>
+            <input type="text" id="modelno" name="modelno"><br>
+            <label for="serialNumb">S/N:</label>
+            <input type="text" id="serialNumb" name="serialNumb"><br>
+            <label for="warranty">Warranty:</label>
+            <input type="checkbox" id="warranty" name="warranty"><br>
+            <h2>Accessories Attached</h2>
+            <div class="row">
+                <div class="column">
+                    <label for="adaptor">Adaptor:</label>
+                    <input type="checkbox" id="adaptor" name="adaptor"><br>
+                    <label for="HDD">HDD:</label>
+                    <input type="checkbox" id="HDD" name="HDD"><br>
+                    <label for="RAM">RAM:</label>
+                    <input type="checkbox" id="RAM" name="RAM"><br>
+                </div>
+                <div class="column">
+                    <label for="battery">Battery:</label>
+                    <input type="checkbox" id="battery" name="battery"><br>
+                    <label for="bag">Bag:</label>
+                    <input type="checkbox" id="bag" name="bag"><br>
+                    <label for="case">Case:</label>
+                    <input type="checkbox" id="case" name="case"><br>
+                </div>
+            </div>
+            <h2>Pre Diagnosis</h2>
+            <div class="row1">
+                <div class="column1">
+                    <p>Step 1:</p>
+                    <label for="adaptive">Adaptive:</label>
+                    <input type="checkbox" id="adaptive" name="adaptive"><br>
+                    <label for="battery1">Battery:</label>
+                    <input type="checkbox" id="battery1" name="battery1"><br>
+                </div>
+                <div class="column1">
+                    <p>Step 2:</p>
+                    <label for="power">Power:</label>
+                    <input type="checkbox" id="power" name="power"><br>
+                    <label for="charging">Charging:</label>
+                    <input type="checkbox" id="charging" name="charging"><br>
+                </div>
+                <div class="column1">
+                    <p>Step 3:</p>
+                    <label for="powerButton">Power Button On/Off:</label>
+                    <input type="checkbox" id="powerButton" name="powerButton"><br>
+                    <label for="display">Display:</label>
+                    <input type="checkbox" id="display" name="display"><br>
+                </div>
+                <div class="column">
+                    <label for="beeping">Beeping:</label>
+                    <input type="checkbox" id="beeping" name="beeping"><br>
+                    <label for="blinking">Blinking:</label>
+                    <input type="checkbox" id="blinking" name="blinking"><br>
+                </div>
+            </div>
+            <br>
+            <label for="problem">Problem:</label>
+            <textarea id="problem" name="problem" rows="4" cols="50"></textarea><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('userDataForm').onsubmit = function(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            var customer = {};
+            formData.forEach((value, key) => customer[key] = value);
+            customer.accessories = {
+                adaptor: formData.get('adaptor') === 'on',
+                HDD: formData.get('HDD') === 'on',
+                RAM: formData.get('RAM') === 'on',
+                battery: formData.get('battery') === 'on',
+                bag: formData.get('bag') === 'on',
+                case: formData.get('case') === 'on'
+            };
+            customer.preDiagnosis = {
+                adaptive: formData.get('adaptive') === 'on',
+                battery1: formData.get('battery1') === 'on',
+                power: formData.get('power') === 'on',
+                charging: formData.get('charging') === 'on',
+                powerButton: formData.get('powerButton') === 'on',
+                display: formData.get('display') === 'on',
+                beeping: formData.get('beeping') === 'on',
+                blinking: formData.get('blinking') === 'on'
+            };
+
+            var customers = JSON.parse(localStorage.getItem('customers')) || [];
+            var updateIndex = localStorage.getItem('updateIndex');
+
+            if (updateIndex !== null) {
+                customers[updateIndex] = customer;
+                localStorage.removeItem('updateIndex');
+                localStorage.removeItem('customerToUpdate');
+            } else {
+                customers.push(customer);
+            }
+
+            localStorage.setItem('customers', JSON.stringify(customers));
+            window.location.href = 'table.html';
+        };
+
+        window.onload = function() {
+            var customerToUpdate = JSON.parse(localStorage.getItem('customerToUpdate'));
+            if (customerToUpdate) {
+                var form = document.getElementById('userDataForm');
+                for (var key in customerToUpdate) {
+                    if (form[key]) {
+                        form[key].value = customerToUpdate[key];
+                    }
+                }
+
+                for (var key in customerToUpdate.accessories) {
+                    if (form[key]) {
+                        form[key].checked = customerToUpdate.accessories[key];
+                    }
+                }
+
+                for (var key in customerToUpdate.preDiagnosis) {
+                    if (form[key]) {
+                        form[key].checked = customerToUpdate.preDiagnosis[key];
+                    }
+                }
+            }
+        };
+    </script>
+</body>
+</html>
