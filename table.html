@@ -3,153 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Data</title>
+    <title>Topix Technology</title>
   
-     <style>
-        @import url('https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap');
+    <style>
+         @import url('https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap');
 
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;      
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f2f2f2; /* Fallback color */
-            background-image: url("image.jpg");
-        }
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 0;      
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #f2f2f2; /* Fallback color */
+                background-image: url("image.jpg");
+            }
 
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 1200px;
-            text-align: center;
-            overflow: auto; 
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2rem;
-            margin-top: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            font-size: 0.9rem;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        #searchForm {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"] {
-            width: 70%;
-            padding: 8px;
-        }
-
-        #searchButton {
-            padding: 8px 12px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #searchButton:hover {
-            background-color: #0056b3;
-        }
-
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        .back-button img {
-            width: 45px; 
-            height: 45px; 
-            margin-right: 10px; 
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                background-color: white;
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                width: 90%;
+                max-width: 1200px;
+                text-align: center;
+                overflow: auto; 
             }
-            input[type="text"] {
-                width: 60%;
-            }
-        }
 
-        @media (max-width: 600px) {
-            input[type="text"] {
-                width: 50%;
+            h1 {
+                text-align: center;
+                font-size: 2rem;
+                margin-top: 0;
+                font-family: 'Poppins', sans-serif;
             }
-        }
 
-        @media (max-width: 480px) {
-            input[type="text"] {
+            table {
                 width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
             }
-        }
-    </style>
+
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            #searchForm {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            input[type="text"] {
+                width: 70%;
+                padding: 8px;
+            }
+
+            #searchButton {
+                padding: 8px 12px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            #searchButton:hover {
+                background-color: #0056b3;
+            }
+
+            .back-button {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            .back-button img {
+                width: 45px; 
+                height: 45px; 
+                margin-right: 10px; 
+                margin-top: 40px;
+            }
+
+            @media (max-width: 768px) {
+                .container {
+                    padding: 10px;
+                }
+                input[type="text"] {
+                    width: 60%;
+                }
+            }
+
+            @media (max-width: 600px) {
+                input[type="text"] {
+                    width: 50%;
+                }
+            }
+
+            @media (max-width: 480px) {
+                input[type="text"] {
+                    width: 100%;
+                }
+            }
+</style>
 </head>
 <body>
     <div class="container">
         <h1>User Data</h1>
-        <table id="dataTable">
-            <tr>
-                <th>Customer ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Received Date</th>
-                <th>Total Charges</th>
-                <th>Deposit Paid</th>
-                <th>Discount</th>
-                <th>Equipment</th>
-                <th>Brand</th>
-                <th>Model No</th>
-                <th>S/N</th>
-                <th>Warranty</th>
-                <th>Accessories</th>
-                <th>Pre Diagnosis</th>
-                <th>Problem</th>
-                <th>Actions</th>
-            </tr>
-        </table>
-        <br><br>
-        <a href="index.html" class="button">Back to Home</a>
-    </div>
+        <form id="searchForm">
+            <a class="back-button" onclick="goBack(event)" href=#index.html><img src="icons8-back-button-64.png" alt="Back"></a>
 
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button type="button" id="searchButton" onclick="searchTable()">Search</button>
+        </form>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Received Date</th>
+                    <th>Total Charges</th>
+                    <th>Deposit Paid</th>
+                    <th>Discount</th>
+                    <th>Equipment</th>
+                    <th>Brand</th>
+                    <th>Model No</th>
+                    <th>S/N</th>
+                    <th>Warranty</th>
+                    <th>Accessories</th>
+                    <th>Pre Diagnosis</th>
+                    <th>Problem</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
     <script>
         function loadTable() {
             var customers = JSON.parse(localStorage.getItem('customers')) || [];
-            var table = document.getElementById("dataTable");
+            var table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
 
             customers.forEach(function(customer, index) {
                 var newRow = table.insertRow(-1);
@@ -171,9 +179,46 @@
                 newRow.insertCell(14).innerHTML = formatPreDiagnosis(customer.preDiagnosis);
                 newRow.insertCell(15).innerHTML = customer.problem;
                 var actionsCell = newRow.insertCell(16);
-                actionsCell.innerHTML = `<button onclick="deleteRow(${index})">Delete</button>
-                                         <button onclick="updateRow(${index})">Update</button>`;
+                actionsCell.innerHTML = `
+                    <button class="edit" onclick="editRow(this, ${index})">Edit</button>
+                    <button class="save" onclick="saveRow(this, ${index})" disabled>Save</button>
+                    <button onclick="deleteRow(${index})">Delete</button>
+                `;
             });
+        }
+
+        function editRow(button, index) {
+            var row = button.closest('tr');
+            row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                cell.contentEditable = true;
+                cell.style.backgroundColor = "#f9f9f9"; 
+            });
+            row.querySelector('.save').disabled = false;
+            button.disabled = true;
+        }
+
+        function saveRow(button, index) {
+            var row = button.closest('tr');
+            var customers = JSON.parse(localStorage.getItem('customers')) || [];
+            var customer = customers[index];
+
+            row.querySelectorAll('td:not(:last-child)').forEach((cell, i) => {
+                var key = Object.keys(customer)[i];
+                customer[key] = cell.textContent;
+                cell.contentEditable = false;
+                cell.style.backgroundColor = ""; 
+            });
+
+            localStorage.setItem('customers', JSON.stringify(customers));
+            row.querySelector('.edit').disabled = false;
+            button.disabled = true;
+        }
+
+        function deleteRow(index) {
+            var customers = JSON.parse(localStorage.getItem('customers')) || [];
+            customers.splice(index, 1);
+            localStorage.setItem('customers', JSON.stringify(customers));
+            location.reload();
         }
 
         function formatAccessories(accessories) {
@@ -196,19 +241,30 @@
             return preDiagnosisString.substring(0, preDiagnosisString.length - 2);
         }
 
-        function deleteRow(index) {
-            var customers = JSON.parse(localStorage.getItem('customers')) || [];
-            customers.splice(index, 1);
-            localStorage.setItem('customers', JSON.stringify(customers));
-            location.reload();
+        function searchTable() {
+            var input, filter, table, tr, tdName, tdPhone, i, txtValueName, txtValuePhone;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                tdName = tr[i].getElementsByTagName("td")[1]; 
+                tdPhone = tr[i].getElementsByTagName("td")[3]; 
+                if (tdName || tdPhone) {
+                    txtValueName = tdName.textContent || tdName.innerText;
+                    txtValuePhone = tdPhone.textContent || tdPhone.innerText;
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValuePhone.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
         }
 
-        function updateRow(index) {
-            var customers = JSON.parse(localStorage.getItem('customers')) || [];
-            var customer = customers[index];
-            localStorage.setItem('updateIndex', index);
-            localStorage.setItem('customerToUpdate', JSON.stringify(customer));
-            window.location.href = 'form.html';
+        function goBack(event) {
+            event.preventDefault(); 
+            window.history.back(); 
         }
 
         window.onload = loadTable;
