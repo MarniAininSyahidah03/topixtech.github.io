@@ -3,96 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Sheet</title>
- <style>
+    <title>TopixTechnology</title>
+    <style>
         @import url('https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap');
 
         body {
             font-family: 'Lato', sans-serif;
             margin: 0;
             padding: 0;
-            background: url("image.jpg") no-repeat center center fixed;
             background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
-            overflow: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("image.jpg");
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
 
         .container {
             background-color: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            max-width: 800px;
-            margin: 20px auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
-            text-align: center;
-            font-size: 2rem;
-            margin-top: 20px;
-            margin-bottom: 30px;
+            margin-top: 0;
+            margin-bottom: 20px;
             color: black;
+            font-size: 32px;
             font-family: 'Poppins', sans-serif;
         }
 
-        label,
-        input,
-        textarea {
+        label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        input {
             width: 100%;
-        }
-
-        input[type="checkbox"] {
-            width: auto;
-            display: inline-block;
-        }
-
-        .row,
-        .row1 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .column,
-        .column1 {
-            flex-basis: 48%; /* Adjust width for better spacing */
-            margin-bottom: 10px;
-        }
-
-        .container h2 {
-            margin-top: 20px;
-            color: black;
-            font-size: 1.125rem;
-        }
-
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        .back-button img {
-            width: 45px;
-            height: 45px;
-            margin-right: 10px;
-            margin-top: 40px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
         }
 
         button {
-            padding: 10px 20px;
             background-color: #7094DB;
-            color: black;
+            color: white;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 20px;
+            border-radius: 8px;
+            transition: background-color 0.5s ease;
             width: 100%;
+            box-sizing: border-box;
         }
 
         button:hover {
@@ -100,171 +94,54 @@
             color: white;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+        @media (min-width: 600px) {
+            h1 {
+                font-size: 40px;
             }
 
-            .column,
-            .column1 {
-                flex-basis: 100%;
+            button {
+                font-size: 18px;
+                padding: 15px 30px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Job Sheet</h1>
-        <form id="userDataForm">
-            <h2>Customer Detail</h2>
-            <label for="custId">ID:</label>
-            <input type="text" id="custId" name="custId"><br>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name"><br>
-            <label for="address">Address:</label>
-            <textarea id="address" name="address" rows="4" cols="50"></textarea><br>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone"><br>
-            <h2>Service Detail</h2>
-            <label for="receivedDate">Received (by date):</label>
-            <input type="date" id="receivedDate" name="receivedDate"><br>
-            <label for="totalCharges">Total Charges:</label>
-            <input type="text" id="totalCharges" name="totalCharges"><br>
-            <label for="depositPaid">Deposit Paid:</label>
-            <input type="text" id="depositPaid" name="depositPaid"><br>
-            <label for="discount">Discount:</label>
-            <input type="text" id="discount" name="discount"><br>
-            <h2>Equipment Detail</h2>
-            <label for="equipment">Equipment:</label>
-            <input type="text" id="equipment" name="equipment"><br>
-            <label for="brand">Brand:</label>
-            <input type="text" id="brand" name="brand"><br>
-            <label for="modelno">Model No:</label>
-            <input type="text" id="modelno" name="modelno"><br>
-            <label for="serialNumb">S/N:</label>
-            <input type="text" id="serialNumb" name="serialNumb"><br>
-            <label for="warranty">Warranty:</label>
-            <input type="checkbox" id="warranty" name="warranty"><br>
-            <h2>Accessories Attached</h2>
-            <div class="row">
-                <div class="column">
-                    <label for="adaptor">Adaptor:</label>
-                    <input type="checkbox" id="adaptor" name="adaptor"><br>
-                    <label for="HDD">HDD:</label>
-                    <input type="checkbox" id="HDD" name="HDD"><br>
-                    <label for="RAM">RAM:</label>
-                    <input type="checkbox" id="RAM" name="RAM"><br>
-                </div>
-                <div class="column">
-                    <label for="battery">Battery:</label>
-                    <input type="checkbox" id="battery" name="battery"><br>
-                    <label for="bag">Bag:</label>
-                    <input type="checkbox" id="bag" name="bag"><br>
-                    <label for="case">Case:</label>
-                    <input type="checkbox" id="case" name="case"><br>
-                </div>
-            </div>
-            <h2>Pre Diagnosis</h2>
-            <div class="row1">
-                <div class="column1">
-                    <p>Step 1:</p>
-                    <label for="adaptive">Adaptive:</label>
-                    <input type="checkbox" id="adaptive" name="adaptive"><br>
-                    <label for="battery1">Battery:</label>
-                    <input type="checkbox" id="battery1" name="battery1"><br>
-                </div>
-                <div class="column1">
-                    <p>Step 2:</p>
-                    <label for="power">Power:</label>
-                    <input type="checkbox" id="power" name="power"><br>
-                    <label for="charging">Charging:</label>
-                    <input type="checkbox" id="charging" name="charging"><br>
-                </div>
-                <div class="column1">
-                    <p>Step 3:</p>
-                    <label for="powerButton">Power Button On/Off:</label>
-                    <input type="checkbox" id="powerButton" name="powerButton"><br>
-                    <label for="display">Display:</label>
-                    <input type="checkbox" id="display" name="display"><br>
-                </div>
-                <div class="column">
-                    <label for="beeping">Beeping:</label>
-                    <input type="checkbox" id="beeping" name="beeping"><br>
-                    <label for="blinking">Blinking:</label>
-                    <input type="checkbox" id="blinking" name="blinking"><br>
-                </div>
-            </div>
-            <br>
-            <label for="problem">Problem:</label>
-            <textarea id="problem" name="problem" rows="4" cols="50"></textarea><br>
-            <br>
-            <input type="submit" value="Submit">
+        <h1>TOPIX TECHNOLOGY</h1>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="button" onclick="login()">Login</button>
         </form>
+
+        <div id="actions" style="display:none;">
+            <button onclick="location.href='form.html'">Input Data</button>
+            <button onclick="location.href='table.html'">Display Data</button>
+        </div>
     </div>
-
     <script>
-        document.getElementById('userDataForm').onsubmit = function(event) {
-            event.preventDefault();
-            var formData = new FormData(event.target);
-            var customer = {};
-            formData.forEach((value, key) => customer[key] = value);
-            customer.accessories = {
-                adaptor: formData.get('adaptor') === 'on',
-                HDD: formData.get('HDD') === 'on',
-                RAM: formData.get('RAM') === 'on',
-                battery: formData.get('battery') === 'on',
-                bag: formData.get('bag') === 'on',
-                case: formData.get('case') === 'on'
-            };
-            customer.preDiagnosis = {
-                adaptive: formData.get('adaptive') === 'on',
-                battery1: formData.get('battery1') === 'on',
-                power: formData.get('power') === 'on',
-                charging: formData.get('charging') === 'on',
-                powerButton: formData.get('powerButton') === 'on',
-                display: formData.get('display') === 'on',
-                beeping: formData.get('beeping') === 'on',
-                blinking: formData.get('blinking') === 'on'
-            };
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
 
-            var customers = JSON.parse(localStorage.getItem('customers')) || [];
-            var updateIndex = localStorage.getItem('updateIndex');
-
-            if (updateIndex !== null) {
-                customers[updateIndex] = customer;
-                localStorage.removeItem('updateIndex');
-                localStorage.removeItem('customerToUpdate');
+            if (username && password) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('actions').style.display = 'block';
             } else {
-                customers.push(customer);
+                alert('Please enter both username and password.');
             }
+        }
 
-            localStorage.setItem('customers', JSON.stringify(customers));
-            window.location.href = 'table.html';
-        };
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromForm = urlParams.get('fromForm');
 
-        window.onload = function() {
-            var customerToUpdate = JSON.parse(localStorage.getItem('customerToUpdate'));
-            if (customerToUpdate) {
-                var form = document.getElementById('userDataForm');
-                for (var key in customerToUpdate) {
-                    if (form[key]) {
-                        form[key].value = customerToUpdate[key];
-                    }
-                }
-
-                for (var key in customerToUpdate.accessories) {
-                    if (form[key]) {
-                        form[key].checked = customerToUpdate.accessories[key];
-                    }
-                }
-
-                for (var key in customerToUpdate.preDiagnosis) {
-                    if (form[key]) {
-                        form[key].checked = customerToUpdate.preDiagnosis[key];
-                    }
-                }
-            }
-        };
+        if (fromForm === 'true') {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('actions').style.display = 'block';
+        }
     </script>
 </body>
 </html>
